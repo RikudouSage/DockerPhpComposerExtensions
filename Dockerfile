@@ -16,6 +16,3 @@ RUN wget https://getcomposer.org/installer -O /tmp/composer-installer
 RUN php /tmp/composer-installer
 RUN chmod +x composer.phar
 RUN mv composer.phar /usr/local/bin/composer
-
-# Final upgrade
-RUN apt-get -y upgrade
