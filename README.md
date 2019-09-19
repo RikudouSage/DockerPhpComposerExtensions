@@ -1,4 +1,4 @@
-Docker image that includes php 7.2, latest version of composer
+Docker image that includes php, latest version of composer
 and the following extensions:
 
 - bcmath
@@ -18,3 +18,12 @@ and the following extensions:
 - zip
 - imagick
 - mailparse
+- redis
+
+## Supported tags:
+
+- 7.1
+- 7.2
+- 7.3
+- 7.4-beta
+- latest - points to latest stable version
