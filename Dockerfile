@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get -y upgrade
 
 # PHP
-RUN apt-get -y install php7.3 php7.3-bcmath php7.3-bz2 php7.3-cli php7.3-cgi php7.3-common php7.3-curl php7.3-gd php7.3-imap php7.3-intl php7.3-json php7.3-mbstring php7.3-mysql php7.3-opcache php7.3-pgsql php7.3-readline php7.3-sqlite3 php7.3-xml php7.3-zip
+RUN apt-get -y install php7.2 php7.2-bcmath php7.2-bz2 php7.2-cli php7.2-cgi php7.2-common php7.2-curl php7.2-gd php7.2-imap php7.2-intl php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-pgsql php7.2-readline php7.2-sqlite3 php7.2-xml php7.2-zip
 RUN apt-get -y install php-imagick php-mailparse php-redis
 
 # Composer
