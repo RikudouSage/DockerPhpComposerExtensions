@@ -1,5 +1,8 @@
 FROM ubuntu:18.04
 
+# Cache Bust
+RUN echo 7.2.22
+
 # Packages
 RUN apt-get update
 RUN apt-get -y install software-properties-common wget unzip
