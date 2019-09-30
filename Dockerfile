@@ -5,7 +5,7 @@ RUN echo 7.2.22
 
 # Packages
 RUN apt-get update
-RUN apt-get -y install software-properties-common wget unzip
+RUN apt-get -y install software-properties-common wget unzip zip
 RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update
 RUN apt-get -y upgrade
