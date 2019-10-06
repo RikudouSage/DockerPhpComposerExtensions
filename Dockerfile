@@ -2,6 +2,7 @@ FROM ubuntu:18.04
 
 # Cache Bust
 RUN echo 7.3.9
+RUN echo v1
 
 # Packages
 RUN apt-get update
