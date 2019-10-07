@@ -2,9 +2,10 @@ FROM ubuntu:18.04
 
 # Cache Bust
 RUN echo 7.3.9
-RUN echo v1
 
 # Packages
+ARG TZ=Europe/Prague
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update
 RUN apt-get -y install software-properties-common wget unzip zip
 RUN add-apt-repository ppa:ondrej/php
