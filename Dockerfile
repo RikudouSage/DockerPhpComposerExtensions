@@ -2,12 +2,15 @@ FROM ubuntu:18.04
 
 # Cache Bust
 RUN echo 7.2.22
-RUN echo v1
 
 # Packages
-RUN apt-get update
-RUN apt-get -y install software-properties-common wget unzip zip
+ARG TZ=Europe/Prague
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apt-get update && \
+apt-get -y install curl software-properties-common unzip wget zip
 RUN add-apt-repository ppa:ondrej/php
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
 RUN apt-get update
 RUN apt-get -y upgrade
 
@@ -23,3 +26,11 @@ RUN wget https://getcomposer.org/installer -O /tmp/composer-installer
 RUN php /tmp/composer-installer
 RUN chmod +x composer.phar
 RUN mv composer.phar /usr/local/bin/composer
+
+# AWS CLI
+RUN apt-get -y install python3-pip
+RUN pip3 install awscli
+
+# Serverless
+RUN apt-get -y install yarn
+RUN yarn global add serverless
