@@ -35,3 +35,6 @@ RUN pip3 install awscli
 # Serverless
 RUN apt-get -y install nodejs yarn
 RUN yarn global add serverless
+
+# Sass
+RUN yarn global add sass
