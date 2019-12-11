@@ -31,4 +31,4 @@ and the following php extensions:
 - 7.2
 - 7.3
 - 7.4
-- latest - points to latest stable version (7.3 currently)
+- latest - points to latest stable version (7.4 currently)
