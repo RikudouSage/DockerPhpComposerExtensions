@@ -1,16 +1,17 @@
 FROM ubuntu:18.04
 
 # Cache Bust
-RUN echo 7.4.0-rc4
+RUN echo 7.4.0
 
 # Packages
 ARG TZ=Europe/Prague
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && \
-apt-get -y install curl git software-properties-common unzip wget zip
+apt-get -y install curl git software-properties-common unzip vim wget zip
 RUN add-apt-repository ppa:ondrej/php
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get update
 RUN apt-get -y upgrade
 
@@ -32,5 +33,8 @@ RUN apt-get -y install python3-pip
 RUN pip3 install awscli
 
 # Serverless
-RUN apt-get -y install yarn
+RUN apt-get -y install nodejs yarn
 RUN yarn global add serverless
+
+# Sass
+RUN yarn global add sass
