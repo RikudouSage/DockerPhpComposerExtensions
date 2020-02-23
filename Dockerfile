@@ -38,3 +38,7 @@ RUN yarn global add serverless
 
 # Sass
 RUN yarn global add sass
+
+# Symfony
+RUN wget https://get.symfony.com/cli/installer -O - | bash
+RUN mv $HOME/.symfony/bin/symfony /usr/local/bin/symfony
