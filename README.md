@@ -27,7 +27,7 @@ and the following php extensions:
 
 ## Supported tags:
 
-- 7.1
+- 7.1 (not updated anymore)
 - 7.2
 - 7.3
 - 7.4
