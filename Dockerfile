@@ -36,6 +36,9 @@ RUN pip3 install awscli
 RUN apt-get -y install nodejs yarn
 RUN yarn global add serverless
 
+# Angular
+RUN yarn global add @angular/cli
+
 # Sass
 RUN yarn global add sass
 
