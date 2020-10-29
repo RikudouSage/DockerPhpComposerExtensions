@@ -1,0 +1,17 @@
+name: Build Image (branch)
+on:
+  push:
+    branches:
+      - 'v*.*'
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_ACCESS_KEY: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+    steps:
+      - name: Docker Login
+        run: echo $DOCKER_ACCESS_KEY | docker login --username rikudousage --password-stdin
+      - name: Checkout
+        uses: actions/checkout@v2.3.2
+      - name: Build
+        run: docker build -t rikudousage/php-composer:${GITHUB_REF##*/v} . && docker push rikudousage/php-composer:${GITHUB_REF##*/v}
