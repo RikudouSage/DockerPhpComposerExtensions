@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 # Cache Bust
-RUN echo 7.4.11
+RUN echo 8.0.0-rc1-6
 
 # Packages
 ARG TZ=Europe/Prague
@@ -19,7 +19,7 @@ RUN apt-get -y upgrade
 RUN apt-get -y install mysql-server
 
 # PHP
-RUN apt-get -y install php7.4 php7.4-bcmath php7.4-bz2 php7.4-cli php7.4-cgi php7.4-common php7.4-curl php7.4-gd php7.4-imap php7.4-intl php7.4-json php7.4-mbstring php7.4-mysql php7.4-opcache php7.4-pgsql php7.4-readline php7.4-sqlite3 php7.4-xml php7.4-zip
+RUN apt-get -y install php8.0 php8.0-bcmath php8.0-bz2 php8.0-cli php8.0-cgi php8.0-common php8.0-curl php8.0-gd php8.0-imap php8.0-intl php8.0-mbstring php8.0-mysql php8.0-opcache php8.0-pgsql php8.0-readline php8.0-sqlite3 php8.0-xml php8.0-zip
 RUN apt-get -y install php-imagick php-mailparse php-redis php-xdebug
 
 # Composer
