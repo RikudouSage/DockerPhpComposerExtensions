@@ -20,7 +20,7 @@ RUN apt-get -y install mysql-server
 
 # PHP
 RUN apt-get -y install php8.0 php8.0-bcmath php8.0-bz2 php8.0-cli php8.0-cgi php8.0-common php8.0-curl php8.0-gd php8.0-imap php8.0-intl php8.0-mbstring php8.0-mysql php8.0-opcache php8.0-pgsql php8.0-readline php8.0-sqlite3 php8.0-xml php8.0-zip
-RUN apt-get -y install php-imagick php-mailparse php-redis php-xdebug
+RUN apt-get -y install php8.0-imagick php8.0-mailparse php8.0-redis php8.0-xdebug
 
 # Composer
 RUN wget https://getcomposer.org/installer -O /tmp/composer-installer
