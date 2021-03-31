@@ -28,8 +28,8 @@ and the following php extensions:
 ## Supported tags:
 
 - 7.1 (not updated anymore)
-- 7.2
+- 7.2 (not updated anymomre)
 - 7.3
 - 7.4
 - 8.0
-- latest - points to latest stable version (7.4 currently)
+- latest - points to latest stable version (8.0 currently)
