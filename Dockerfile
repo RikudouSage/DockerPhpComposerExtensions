@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 # Cache Bust
-RUN echo 7.3.24
+RUN echo 7.3.27
 
 # Packages
 ARG TZ=Europe/Prague
