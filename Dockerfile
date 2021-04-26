@@ -7,7 +7,7 @@ RUN echo 7.4.16
 ARG TZ=Europe/Prague
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && \
-apt-get -y install curl git jq software-properties-common unzip vim wget zip
+apt-get -y install curl dnsutils git jq software-properties-common unzip vim wget zip
 RUN add-apt-repository ppa:ondrej/php
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
