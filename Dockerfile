@@ -1,8 +1,5 @@
 FROM ubuntu:18.04
 
-# Cache Bust
-RUN echo 8.0.3
-
 # Packages
 ARG TZ=Europe/Prague
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
