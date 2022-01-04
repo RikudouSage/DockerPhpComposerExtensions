@@ -16,8 +16,8 @@ RUN apt-get -y upgrade
 RUN apt-get -y install mysql-server
 
 # PHP
-RUN apt-get -y install php8.1 php8.1-bcmath php8.1-bz2 php8.1-cli php8.1-cgi php8.1-common php8.1-curl php8.1-gd php8.1-imap php8.1-intl php8.1-mbstring php8.1-mysql php8.1-opcache php8.1-pgsql php8.1-readline php8.1-sqlite3 php8.1-xml php8.1-zip
-RUN apt-get -y install php8.1-imagick php8.1-mailparse php8.1-redis php8.1-xdebug
+RUN apt-get -y install php8.0 php8.0-bcmath php8.0-bz2 php8.0-cli php8.0-cgi php8.0-common php8.0-curl php8.0-gd php8.0-imap php8.0-intl php8.0-mbstring php8.0-mysql php8.0-opcache php8.0-pgsql php8.0-readline php8.0-sqlite3 php8.0-xml php8.0-zip
+RUN apt-get -y install php8.0-imagick php8.0-mailparse php8.0-redis php8.0-xdebug
 
 # Composer
 RUN wget https://getcomposer.org/installer -O /tmp/composer-installer
