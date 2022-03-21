@@ -28,6 +28,8 @@ RUN mv composer.phar /usr/local/bin/composer
 # AWS CLI
 RUN apt-get -y install python3-pip
 RUN pip3 install awscli
+RUN curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb" \
+    && dpkg -i session-manager-plugin.deb || apt-get -f -y install
 
 # Serverless
 RUN apt-get -y install nodejs yarn
