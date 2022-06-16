@@ -17,7 +17,7 @@ RUN apt-get -y install mysql-server
 
 # PHP
 RUN apt-get -y install php7.4 php7.4-bcmath php7.4-bz2 php7.4-cli php7.4-cgi php7.4-common php7.4-curl php7.4-gd php7.4-imap php7.4-intl php7.4-json php7.4-mbstring php7.4-mysql php7.4-opcache php7.4-pgsql php7.4-readline php7.4-sqlite3 php7.4-xml php7.4-zip
-RUN apt-get -y install php7.4-imagick php7.4-mailparse php7.4-redis php7.4-xdebug
+RUN apt-get -y install php7.4-imagick php7.4-mailparse php7.4-redis php7.4-xdebug php7.4-uuid
 
 # Composer
 RUN wget https://getcomposer.org/installer -O /tmp/composer-installer
@@ -36,7 +36,7 @@ RUN apt-get -y install nodejs yarn
 RUN yarn global add serverless
 
 # Angular
-RUN yarn global add @angular/cli
+RUN yarn global add @angular/cli@13
 
 # Sass
 RUN yarn global add sass
