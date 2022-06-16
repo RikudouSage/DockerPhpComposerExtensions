@@ -36,7 +36,7 @@ RUN apt-get -y install nodejs yarn
 RUN yarn global add serverless
 
 # Angular
-RUN yarn global add @angular/cli
+RUN yarn global add @angular/cli@13
 
 # Sass
 RUN yarn global add sass
