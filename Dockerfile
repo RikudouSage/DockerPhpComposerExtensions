@@ -8,7 +8,7 @@ apt-get -y install curl dnsutils git jq software-properties-common unzip vim wge
 RUN add-apt-repository ppa:ondrej/php
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get update
 RUN apt-get -y upgrade
 
@@ -43,4 +43,4 @@ RUN yarn global add sass
 
 # Symfony
 RUN wget https://get.symfony.com/cli/installer -O - | bash
-RUN mv $HOME/.symfony/bin/symfony /usr/local/bin/symfony
+RUN mv $HOME/.symfony/bin/symfony /usr/local/bin/symfony || $HOME/.symfony5/bin/symfony /usr/local/bin/symfony
