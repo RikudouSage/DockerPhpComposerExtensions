@@ -43,4 +43,4 @@ RUN yarn global add sass
 
 # Symfony
 RUN wget https://get.symfony.com/cli/installer -O - | bash
-RUN mv $HOME/.symfony/bin/symfony /usr/local/bin/symfony || $HOME/.symfony5/bin/symfony /usr/local/bin/symfony
+RUN mv $HOME/.symfony/bin/symfony /usr/local/bin/symfony || mv $HOME/.symfony5/bin/symfony /usr/local/bin/symfony
