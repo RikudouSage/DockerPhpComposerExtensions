@@ -44,3 +44,11 @@ RUN yarn global add sass
 # Symfony
 RUN wget https://get.symfony.com/cli/installer -O - | bash
 RUN mv $HOME/.symfony/bin/symfony /usr/local/bin/symfony || mv $HOME/.symfony5/bin/symfony /usr/local/bin/symfony
+
+# Phive
+RUN wget -O phive.phar https://phar.io/releases/phive.phar && \
+    wget -O phive.phar.asc https://phar.io/releases/phive.phar.asc && \
+    gpg --keyserver hkps://keys.openpgp.org --recv-keys 0x9D8A98B29B2D5D79 && \
+    gpg --verify phive.phar.asc phive.phar && \
+    chmod +x phive.phar && \
+    mv phive.phar /usr/local/bin/phive
