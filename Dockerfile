@@ -22,7 +22,7 @@ RUN pecl install redis imagick xdebug uuid
 RUN echo "extension=redis.so" >> /etc/php/8.2/cli/php.ini && \
     echo "extension=imagick.so" >> /etc/php/8.2/cli/php.ini && \
     echo "extension=uuid.so" >> /etc/php/8.2/cli/php.ini && \
-    echo "zend_extension=xdebug.so" >> /etc/php/8.2/cli/php.ini \
+    echo "zend_extension=xdebug.so" >> /etc/php/8.2/cli/php.ini
 RUN pecl download mailparse && \
     mkdir mailparse && \
     tar xvzf mailparse-*.tgz -C mailparse && \
