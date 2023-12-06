@@ -1,7 +1,8 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Packages
 ARG TZ=Europe/Prague
+
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && \
     apt-get -y install curl dnsutils git jq libmagickwand-dev libmagickcore-dev software-properties-common unzip uuid-dev vim wget zip graphviz && \
@@ -9,7 +10,8 @@ RUN apt-get update && \
 RUN add-apt-repository -y ppa:ondrej/php
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" > /etc/apt/sources.list.d/nodesource.list
 RUN apt-get update
 RUN apt-get -y upgrade
 
@@ -17,12 +19,9 @@ RUN apt-get -y upgrade
 RUN apt-get -y install mysql-server
 
 # PHP
-RUN apt-get -y install php8.2 php8.2-bcmath php8.2-bz2 php8.2-cli php8.2-cgi php8.2-common php8.2-curl php8.2-dev php8.2-gd php8.2-imap php8.2-intl php8.2-mbstring php8.2-mysql php8.2-opcache php8.2-pgsql php8.2-readline php8.2-sqlite3 php8.2-xml php8.2-zip
-RUN pecl install redis imagick xdebug uuid
-RUN echo "extension=redis.so" >> /etc/php/8.2/cli/php.ini && \
-    echo "extension=imagick.so" >> /etc/php/8.2/cli/php.ini && \
-    echo "extension=uuid.so" >> /etc/php/8.2/cli/php.ini && \
-    echo "zend_extension=xdebug.so" >> /etc/php/8.2/cli/php.ini
+RUN apt-get -y install php8.3 php8.3-bcmath php8.3-bz2 php8.3-cli php8.3-cgi php8.3-common php8.3-curl php8.3-dev  \
+    php8.3-gd php8.3-imagick php8.3-imap php8.3-intl php8.3-mbstring php8.3-mysql php8.3-opcache php8.3-pgsql  \
+    php8.3-readline php8.3-redis php8.3-sqlite3 php8.3-uuid php8.3-xdebug php8.3-xml php8.3-zip
 RUN pecl download mailparse && \
     mkdir mailparse && \
     tar xvzf mailparse-*.tgz -C mailparse && \
@@ -34,7 +33,7 @@ RUN pecl download mailparse && \
     make install && \
     cd ../.. && \
     rm -rf mailparse* && \
-    echo "extension=mailparse.so" >> /etc/php/8.2/cli/php.ini
+    echo "extension=mailparse.so" >> /etc/php/8.3/cli/php.ini
 
 # Composer
 RUN wget https://getcomposer.org/installer -O /tmp/composer-installer

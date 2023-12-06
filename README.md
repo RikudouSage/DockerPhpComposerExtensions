@@ -31,7 +31,8 @@ and the following php extensions:
 - 7.2 (not updated anymore)
 - 7.3 (not updated anymore)
 - 7.4 (not updated anymore)
-- 8.0
+- 8.0 (not updated anymore)
 - 8.1
 - 8.2
-- latest - points to latest stable version (8.2 currently)
+- 8.3
+- latest - points to latest stable version (8.3 currently)
