@@ -1,15 +1,17 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Packages
 ARG TZ=Europe/Prague
+
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && \
-    apt-get -y install curl dnsutils git jq software-properties-common unzip vim wget zip graphviz && \
+    apt-get -y install curl dnsutils git jq libmagickwand-dev libmagickcore-dev software-properties-common unzip uuid-dev vim wget zip graphviz && \
     rm -rf /var/lib/apt/lists/*
-RUN add-apt-repository ppa:ondrej/php
+RUN add-apt-repository -y ppa:ondrej/php
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" > /etc/apt/sources.list.d/nodesource.list
 RUN apt-get update
 RUN apt-get -y upgrade
 
@@ -17,8 +19,21 @@ RUN apt-get -y upgrade
 RUN apt-get -y install mysql-server
 
 # PHP
-RUN apt-get -y install php8.1 php8.1-bcmath php8.1-bz2 php8.1-cli php8.1-cgi php8.1-common php8.1-curl php8.1-gd php8.1-imap php8.1-intl php8.1-mbstring php8.1-mysql php8.1-opcache php8.1-pgsql php8.1-readline php8.1-sqlite3 php8.1-xml php8.1-zip
-RUN apt-get -y install php8.1-imagick php8.1-mailparse php8.1-redis php8.1-xdebug php8.1-uuid
+RUN apt-get -y install php8.1 php8.1-bcmath php8.1-bz2 php8.1-cli php8.1-cgi php8.1-common php8.1-curl php8.1-dev  \
+    php8.1-gd php8.1-imagick php8.1-imap php8.1-intl php8.1-mbstring php8.1-mysql php8.1-opcache php8.1-pgsql  \
+    php8.1-readline php8.1-redis php8.1-sqlite3 php8.1-uuid php8.1-xdebug php8.1-xml php8.1-zip
+RUN pecl download mailparse && \
+    mkdir mailparse && \
+    tar xvzf mailparse-*.tgz -C mailparse && \
+    cd mailparse/mailparse* && \
+    phpize && \
+    ./configure && \
+    sed -i 's/^\(#error .* the mbstring extension!\)/\/\/\1/' mailparse.c && \
+    make && \
+    make install && \
+    cd ../.. && \
+    rm -rf mailparse* && \
+    echo "extension=mailparse.so" >> /etc/php/8.1/cli/php.ini
 
 # Composer
 RUN wget https://getcomposer.org/installer -O /tmp/composer-installer
