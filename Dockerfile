@@ -49,7 +49,7 @@ RUN curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubunt
 
 # Serverless
 RUN apt-get -y install nodejs yarn
-RUN yarn global add serverless
+RUN yarn global add serverless@3
 
 # Angular
 RUN yarn global add @angular/cli@13
