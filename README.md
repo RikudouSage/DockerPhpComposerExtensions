@@ -35,4 +35,5 @@ and the following php extensions:
 - 8.1
 - 8.2
 - 8.3
-- latest - points to latest stable version (8.3 currently)
+- 8.4
+- latest - points to latest stable version (8.4 currently)
