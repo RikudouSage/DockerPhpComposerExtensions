@@ -19,9 +19,9 @@ RUN apt-get -y upgrade
 RUN apt-get -y install mysql-server
 
 # PHP
-RUN apt-get -y install php8.4 php8.4-bcmath php8.4-bz2 php8.4-cli php8.4-cgi php8.4-common php8.4-curl php8.4-dev  \
-    php8.4-gd php8.4-imagick php8.4-imap php8.4-intl php8.4-mbstring php8.4-mysql php8.4-opcache php8.4-pgsql  \
-    php8.4-readline php8.4-redis php8.4-sqlite3 php8.4-uuid php8.4-xdebug php8.4-xml php8.4-zip
+RUN apt-get -y install php8.3 php8.3-bcmath php8.3-bz2 php8.3-cli php8.3-cgi php8.3-common php8.3-curl php8.3-dev  \
+    php8.3-gd php8.3-imagick php8.3-imap php8.3-intl php8.3-mbstring php8.3-mysql php8.3-opcache php8.3-pgsql  \
+    php8.3-readline php8.3-redis php8.3-sqlite3 php8.3-uuid php8.3-xdebug php8.3-xml php8.3-zip
 RUN pecl download mailparse && \
     mkdir mailparse && \
     tar xvzf mailparse-*.tgz -C mailparse && \
@@ -33,7 +33,7 @@ RUN pecl download mailparse && \
     make install && \
     cd ../.. && \
     rm -rf mailparse* && \
-    echo "extension=mailparse.so" >> /etc/php/8.4/cli/php.ini
+    echo "extension=mailparse.so" >> /etc/php/8.3/cli/php.ini
 
 # Composer
 RUN wget https://getcomposer.org/installer -O /tmp/composer-installer
