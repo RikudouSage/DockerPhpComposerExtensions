@@ -5,7 +5,7 @@ ARG TZ=Europe/Prague
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && \
-    apt-get -y install curl dnsutils git jq libmagickwand-dev libmagickcore-dev software-properties-common unzip uuid-dev vim wget zip graphviz && \
+    apt-get -y install curl dnsutils git jq libmagickwand-dev libmagickcore-dev rsync software-properties-common unzip uuid-dev vim wget zip graphviz && \
     rm -rf /var/lib/apt/lists/*
 RUN add-apt-repository -y ppa:ondrej/php
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
